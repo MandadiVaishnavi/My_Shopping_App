@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products | ProductHub</title>
+  <style>
+    .product-card {
+      width: 300px; /* Set the width of the product card */
+    }
+  
+    .product-img {
+      width: 100%; /* Set the width of the product image */
+      height: auto; /* Maintain aspect ratio */
+    }
+  </style>
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="https://getbootstrap.com/docs/4.5/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+      ProductHub
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="aboutus.html">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="home.html">Home</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="home.html#contact">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="home.html#login">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Products</h2>
+  <div id="productList" class="row">
+    <!-- Product Cards will be appended here -->
+  </div> <!-- End of productList -->
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetchProducts();
+  });
+
+  async function fetchProducts() {
+    try {
+      const response = await fetch('http://127.0.0.1:5000/api/products');
+      if (!response.ok) {
+        throw new Error('Failed to fetch products');
+      }
+      const products = await response.json();
+      renderProducts(products);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  }
+
+  function renderProducts(products) {
+    const productList = document.getElementById('productList');
+    productList.innerHTML = products.map(product => getProductCard(product)).join('');
+  }
+
+  function getProductCard(product) {
+    return `
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="${product.image}" class="card-img-top product-img" alt="Product Image">
+
+          
+          <div class="card-body">
+            <h5 class="card-title">${product.name}</h5>
+            <p class="card-text">${product.description}</p>
+            <p class="card-text">$${product.price}</p>
+            <a href="#" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
