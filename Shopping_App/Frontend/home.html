@@ -9,6 +9,7 @@
 </head>
 <body>
 
+<!-- Header/Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container">
     <a class="navbar-brand" href="#">
@@ -25,7 +26,7 @@
           <a class="nav-link" href="aboutus.html">About Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="home.html#home">Home</a>
+          <a class="nav-link" href="#home">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="products.html#products">Products</a>
@@ -34,22 +35,83 @@
           <a class="nav-link" href="#contact">Contact Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#login">Login</a>
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<div class="container mt-5">
+<!-- Main Content -->
+<div class="container mt-5" id="home">
   <div class="jumbotron">
     <h1 class="display-4">Welcome to ProductHub</h1>
     <p class="lead">Your one-stop destination for amazing products!</p>
     <hr class="my-4">
     <p>Explore our wide range of products and find exactly what you need.</p>
-    <a class="btn btn-primary btn-lg" href="#products" role="button">View Products</a>
+    <a class="btn btn-primary btn-lg" href="products.html#products" role="button">View Products</a>
   </div>
 </div>
+
+<!-- Footer-->
+<footer class="footer text-center">
+  <div class="container">
+    <div class="row">
+      <!-- Footer Location-->
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <h5 class=" mb-4">Location</h5>
+        <p class="lead mb-0">
+          27 Jane Street, John Doe
+          <br />
+          TS 5000027
+        </p>
+      </div>
+      <!-- Footer Social Icons-->
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <h5 class=" mb-4">Around the Web</h5>
+        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-facebook-f"></i></a>
+        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-twitter"></i></a>
+        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <!-- Footer About Text-->
+      <div class="col-lg-4">
+        <h5 class="mb-4">About</h5>
+        <p class="lead mb-0">
+          BuyBest
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Add your login form here -->
+        <form>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter username">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
