@@ -10,7 +10,7 @@ app.use(cors());
 
 
 // MongoDB connection
-mongoose.connect('mongodb+srv://vaishnavi:123456C@cluster0.wt3sm3f.mongodb.net/MandadiVaishnavi?retryWrites=true&w=majority&appName=Cluster0', {
+mongoose.connect('mongodb+srv://<HOSTNAME>:<PASSWORD>@cluster0.wt3sm3f.mongodb.net/MandadiVaishnavi?retryWrites=true&w=majority&appName=Cluster0', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
